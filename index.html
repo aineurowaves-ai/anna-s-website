@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anna Chab — Model Portfolio. Editorial, beauty, runway & film.">
+  <title>Anna Chab — Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,9..72,400;0,9..72,500;1,9..72,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <nav class="topbar" id="topbar">
+    <a href="#" class="brand">Anna Chab</a>
+    <div class="topbar-end">
+      <a href="#work" class="topbar-link">Portfolio</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero-photo">
+      <img id="hero-img" src="" alt="Anna Chab" width="800" height="1000">
+    </div>
+    <div class="hero-content">
+      <p class="hero-kicker">Model · Editorial</p>
+      <h1 class="hero-title">Anna <em>Chab</em></h1>
+      <p class="hero-lede">Fashion editorials, beauty, runway &amp; film.</p>
+      <a href="#work" class="hero-cta">Explore work</a>
+    </div>
+  </header>
+
+  <div class="filters-bar" id="filters-bar">
+    <div class="filters-inner">
+      <div class="filters-track" id="nav-links">
+        <button class="filter-btn active" data-filter="all">All</button>
+      </div>
+      <p class="filters-count" id="item-count">Loading&hellip;</p>
+    </div>
+  </div>
+
+  <main id="work">
+    <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand">Anna Chab</p>
+    <p class="footer-copy">&copy; <span id="year"></span></p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-label="Media viewer">
+    <div class="lightbox-top">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox-content" id="lightbox-content"></div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <script src="js/media-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
