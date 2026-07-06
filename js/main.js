@@ -24,7 +24,7 @@
     categories.map((c) => [c.id, c.label])
   );
 
-  const HERO_IMAGE = "media/IMG_6465.JPG";
+  const HERO_IMAGE = "media/IMG_6465-upscaled.jpg";
 
   let allItems = [];
   let visibleItems = [];

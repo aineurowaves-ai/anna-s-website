@@ -39,7 +39,7 @@ if (-not (Test-Path -LiteralPath $mediaDir)) {
 }
 
 $files = Get-ChildItem -LiteralPath $mediaDir -File |
-  Where-Object { $ext -contains $_.Extension.ToLower() } |
+  Where-Object { $ext -contains $_.Extension.ToLower() -and $_.Name -notmatch '-upscaled\.' } |
   ForEach-Object {
     $category = Get-MediaCategory -FileName $_.Name
     [PSCustomObject]@{
