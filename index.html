@@ -17,26 +17,37 @@
   </script>
 </head>
 <body>
-  <nav class="topbar" id="topbar">
-    <a href="#" class="brand">Anna Chab</a>
-    <div class="topbar-end">
-      <a href="#work" class="topbar-link">Portfolio</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
-  </nav>
-
   <header class="hero" id="hero">
-    <div class="hero-photo">
-      <img id="hero-img" src="" alt="Anna Chab" width="800" height="1000">
+    <div class="hero-media" id="hero-media" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <nav class="topbar" id="topbar">
+      <a href="#" class="brand">Anna Chab</a>
+      <div class="topbar-end">
+        <a href="#work" class="topbar-link">Portfolio</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hero-body">
+      <p class="hero-kicker">Model · Paris · Editorial</p>
+      <h1 class="hero-title">
+        <span class="hero-title-line">Anna</span>
+        <span class="hero-title-line hero-title-accent">Chab</span>
+      </h1>
+      <p class="hero-lede">Fashion editorials, beauty campaigns, runway &amp; film.</p>
+      <a href="#work" class="hero-cta">
+        <span>Explore work</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
     </div>
-    <div class="hero-content">
-      <p class="hero-kicker">Model · Editorial</p>
-      <h1 class="hero-title">Anna <em>Chab</em></h1>
-      <p class="hero-lede">Fashion editorials, beauty, runway &amp; film.</p>
-      <a href="#work" class="hero-cta">Explore work</a>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </header>
 
@@ -50,12 +61,15 @@
   </div>
 
   <main id="work">
-    <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+    <div id="gallery" aria-live="polite"></div>
   </main>
 
   <footer class="footer">
-    <p class="footer-brand">Anna Chab</p>
-    <p class="footer-copy">&copy; <span id="year"></span></p>
+    <div class="footer-inner">
+      <p class="footer-brand">Anna Chab</p>
+      <p class="footer-tag">Available for bookings worldwide</p>
+      <p class="footer-copy">&copy; <span id="year"></span></p>
+    </div>
   </footer>
 
   <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-label="Media viewer">

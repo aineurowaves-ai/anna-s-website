@@ -1,5 +1,5 @@
 (function () {
-  const heroImg = document.getElementById("hero-img");
+  const heroMedia = document.getElementById("hero-media");
   const topbar = document.getElementById("topbar");
   const gallery = document.getElementById("gallery");
   const navLinks = document.getElementById("nav-links");
@@ -55,7 +55,7 @@
   });
 
   window.addEventListener("scroll", () => {
-    topbar.classList.toggle("scrolled", window.scrollY > 40);
+    topbar.classList.toggle("scrolled", window.scrollY > 60);
   }, { passive: true });
 
   function encodePath(name) {
@@ -69,8 +69,9 @@
       : items.find((i) => i.type === "image" && i.category === "portrait")?.name ||
         items.find((i) => i.type === "image")?.name;
 
-    if (pick && heroImg) {
-      heroImg.src = encodePath(pick);
+    if (pick && heroMedia) {
+      heroMedia.style.backgroundImage = `url("${encodePath(pick)}")`;
+      heroMedia.style.backgroundPosition = "center 30%";
     }
   }
 
@@ -89,13 +90,6 @@
     itemCount.textContent = `${shown} · ${categoryLabels[currentFilter] || currentFilter}`;
   }
 
-  function createDivider(label, count) {
-    const el = document.createElement("div");
-    el.className = "gallery-divider";
-    el.innerHTML = `<span>${label}</span><small>${count}</small>`;
-    return el;
-  }
-
   function createGalleryItem(item, index) {
     const el = document.createElement("article");
     el.className = "gallery-item";
@@ -108,27 +102,38 @@
       el.innerHTML = `
         <video src="${src}" muted preload="metadata" playsinline></video>
         <span class="play-icon"></span>
+        <div class="gallery-item-overlay"><span class="gallery-item-label">${label}</span></div>
       `;
       const video = el.querySelector("video");
       video.addEventListener("loadeddata", () => {
         video.currentTime = Math.min(1, video.duration * 0.1);
       });
     } else {
-      el.innerHTML = `<img src="${src}" alt="${label}" loading="lazy" decoding="async">`;
+      el.innerHTML = `
+        <img src="${src}" alt="${label}" loading="lazy" decoding="async">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">${label}</span></div>
+      `;
     }
 
     el.addEventListener("click", () => openLightbox(index));
     return el;
   }
 
+  function createDivider(label, count) {
+    const el = document.createElement("div");
+    el.className = "gallery-divider";
+    el.innerHTML = `<span>${label}</span><small>${String(count).padStart(2, "0")}</small>`;
+    return el;
+  }
+
   function renderGallery() {
     visibleItems = getFilteredItems();
     gallery.innerHTML = "";
-    gallery.className = "gallery-grid";
+    gallery.classList.remove("is-empty");
 
     if (visibleItems.length === 0) {
       gallery.innerHTML = '<p class="loading">No work in this category</p>';
-      gallery.className = "";
+      gallery.classList.add("is-empty");
       updateCount();
       return;
     }
@@ -209,7 +214,7 @@
     renderGallery();
 
     const bar = document.getElementById("filters-bar");
-    const top = bar.getBoundingClientRect().top + window.scrollY;
+    const top = bar.getBoundingClientRect().top + window.scrollY - 10;
     if (window.scrollY > top) window.scrollTo({ top, behavior: "smooth" });
   });
 
@@ -231,7 +236,6 @@
     allItems = items || [];
     if (!allItems.length) {
       gallery.innerHTML = '<p class="loading">No media found</p>';
-      gallery.className = "";
       return;
     }
     setHeroImage(allItems);
@@ -246,7 +250,6 @@
       .then((d) => initGallery(d.items))
       .catch(() => {
         gallery.innerHTML = '<p class="error">Could not load gallery</p>';
-        gallery.className = "";
       });
   }
 })();
